@@ -186,6 +186,9 @@ public class GRPCSampler extends AbstractSampler implements ThreadListener, Test
         Status.Code code = status.getCode();
         responseMessage += code.value() + " " + code.name();
         responseData = status.getDescription();
+        if (responseData == null) {
+            responseData = "Not supplied";
+        }
         sampleResult.setResponseMessage(responseMessage);
         sampleResult.setResponseData(responseData, "UTF-8");
     }
